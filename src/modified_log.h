@@ -11,8 +11,8 @@ additional meta information about the image.
 */
 typedef struct image_struct {
     double** data;        ///< the 2D array of image data.
-    unsigned int height;  ///< the number of pixels along the 1st axis.
-    unsigned int width;   ///< the number of pixels along the 2nd axis.
+    int height;  ///< the number of pixels along the 1st axis.
+    int width;   ///< the number of pixels along the 2nd axis.
 } image;
 
 

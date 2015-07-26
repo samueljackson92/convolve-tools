@@ -51,7 +51,7 @@ image* create_image_from_shape(image* original) {
 }
 
 image* create_image_from_size(int height, int width) {
-    image *new = malloc(sizeof(image));
+    image* new = malloc(sizeof(image));
     new->height = height;
     new->width = width;
 
@@ -76,11 +76,17 @@ void print_image(image* img) {
 }
 
 void free_image(image* img) {
+    //free each row of image
     for (int i = 0; i < img->height; i++)
     {
         double* current_row = img->data[i];
         free(current_row);
+        current_row = NULL;
     }
+
+    free(img->data);  //free the column of pointers to rows.
+    free(img);
+    img = NULL;
 }
 
 
