@@ -2,7 +2,8 @@
 #include "image.h"
 #include "modified_log.h"
 
-void convolve(Image* input, Image* kernel, Image* output) {
+Image* convolve(Image* input, Image* kernel) {
+    Image* output = create_image_from_shape(input);
     int rows = input->height;
     int cols = input->width;
 
@@ -42,17 +43,18 @@ void convolve(Image* input, Image* kernel, Image* output) {
             }
         }
     }
+
+    return output;
 }
 
 int main(int argc, char** argv) {
     Image* img = create_image_from_size(10,10);
-    Image* out = create_image_from_shape(img);
     img->data[5][5] = 10;
 
     Image* kernel = create_image_from_size(5, 5);
     kernel->data[2][2] = 10;
 
-    convolve(img, kernel, out);
+    Image* out = convolve(img, kernel);
     print_image(out);
 
     free_image(img);

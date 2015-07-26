@@ -17,6 +17,6 @@ edge response produced by the boundary of the mask.
 \param kernel The kernel to convolve with the image.
 \param output Image struct to store the output of convolution in.
 */
-void convolve(Image* input, Image* kernel, Image* output);
+Image* convolve(Image* input, Image* kernel);
 
 #endif
