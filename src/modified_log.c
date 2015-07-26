@@ -3,7 +3,7 @@
 
 #include "modified_log.h"
 
-void convolve(image* input, image* kernel, image* output) {
+void convolve(Image* input, Image* kernel, Image* output) {
     int rows = input->height;
     int cols = input->width;
 
@@ -45,13 +45,13 @@ void convolve(image* input, image* kernel, image* output) {
     }
 }
 
-image* create_image_from_shape(image* original) {
-    image* new = create_image_from_size(original->height, original->width);
+Image* create_image_from_shape(Image* original) {
+    Image* new = create_image_from_size(original->height, original->width);
     return new;
 }
 
-image* create_image_from_size(int height, int width) {
-    image* new = malloc(sizeof(image));
+Image* create_image_from_size(int height, int width) {
+    Image* new = malloc(sizeof(Image));
     new->height = height;
     new->width = width;
 
@@ -66,7 +66,7 @@ image* create_image_from_size(int height, int width) {
     return new;
 }
 
-void print_image(image* img) {
+void print_image(Image* img) {
     for (int i = 0; i < img->height; i++){
         for (int j = 0; j < img->width; j++){
             printf("%.2f ", img->data[i][j]);
@@ -75,7 +75,7 @@ void print_image(image* img) {
     }
 }
 
-void free_image(image* img) {
+void free_image(Image* img) {
     //free each row of image
     for (int i = 0; i < img->height; i++)
     {
@@ -91,11 +91,11 @@ void free_image(image* img) {
 
 
 int main(int argc, char** argv) {
-    image* img = create_image_from_size(10,10);
-    image* out = create_image_from_shape(img);
+    Image* img = create_image_from_size(10,10);
+    Image* out = create_image_from_shape(img);
     img->data[5][5] = 10;
 
-    image* kernel = create_image_from_size(5, 5);
+    Image* kernel = create_image_from_size(5, 5);
     kernel->data[2][2] = 10;
 
     convolve(img, kernel, out);
