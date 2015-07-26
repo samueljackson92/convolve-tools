@@ -6,11 +6,13 @@ set(CMAKE_BUILD_TYPE Debug)
 set(EXEC_NAME mlog)
 
 set(INC_FILES
+    image.h
     modified_log.h
 )
 
 set(SRC_FILES
+    image.c
     modified_log.c
 )
 
-add_executable(${EXEC_NAME} modified_log)
+add_executable(${EXEC_NAME} ${INC_FILES} ${SRC_FILES})
