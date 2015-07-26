@@ -1,2 +1,2 @@
-# modified-log
-Implementation of a LoG filter module that is modified according to an image mask. 
+# Convolve Tools
+Implementation of some custom convolution routines. In particular a LoG filter module that is modified according to an image mask.
