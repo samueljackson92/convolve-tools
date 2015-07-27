@@ -4,8 +4,7 @@
 #include "image.h"
 
 Image* create_image_from_shape(Image* original) {
-    Image* new = create_image_from_size(original->height, original->width);
-    return new;
+    return create_image_from_size(original->height, original->width);
 }
 
 Image* create_image_from_size(int height, int width) {
