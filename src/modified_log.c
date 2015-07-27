@@ -1,9 +1,9 @@
+#include <stdlib.h>
 
 #include "image.h"
 #include "modified_log.h"
 
-Image* convolve(Image* input, Image* kernel) {
-    Image* output = create_image_from_shape(input);
+void convolve(Image* input, Image* kernel, Image* output) {
     int rows = input->height;
     int cols = input->width;
 
@@ -45,22 +45,19 @@ Image* convolve(Image* input, Image* kernel) {
             }
         }
     }
-
-    return output;
 }
 
-int main(int argc, char** argv) {
-    Image* img = create_image_from_size(10,10);
-    img->data[5][5] = 10;
+void py_convolve(double* in, double* kern, double* out,
+    int height, int width, int kernel_height, int kernel_width) {
 
-    Image* kernel = create_image_from_size(5, 5);
-    kernel->data[2][2] = 10;
+    Image* input = create_image_from_array(in, height, width);
+    Image* kernel = create_image_from_array(kern, kernel_height, kernel_width);
+    Image* output = create_image_from_array(out, height, width);
 
-    Image* out = convolve(img, kernel);
-    print_image(out);
+    convolve(input, kernel, output);
+    out = output->data;
 
-    free_image(img);
-    free_image(out);
-    free_image(kernel);
-    return 0;
+    free(input);
+    free(kernel);
+    free(output);
 }

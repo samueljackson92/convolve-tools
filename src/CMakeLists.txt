@@ -15,4 +15,4 @@ set(SRC_FILES
     modified_log.c
 )
 
-add_executable(${EXEC_NAME} ${INC_FILES} ${SRC_FILES})
+add_library(convolve_tools SHARED ${INCLUDE_FILES} ${SRC_FILES})
