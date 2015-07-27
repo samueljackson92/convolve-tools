@@ -10,7 +10,7 @@ Defines an Image datatype and corresponding manipulation functions.
 additional meta information about the image.
 */
 typedef struct image_struct {
-    double** data;        ///< the 2D array of image data.
+    double* data;        ///< the 2D array of image data.
     int height;  ///< the number of pixels along the 1st axis.
     int width;   ///< the number of pixels along the 2nd axis.
 } Image;
@@ -31,6 +31,25 @@ This will also initialise the image data to 0.
 \return A new image with the given dimensions.
 */
 Image* create_image_from_size(int height, int width);
+
+Image* create_image_from_array(double* data, int height, int width);
+
+/*! \brief Get the pixel at the given indicies
+
+\param img The image to get the value from.
+\param i Row index of the image
+\param i Column index of the image
+*/
+double get_pixel(Image* img, int i, int j);
+
+/*! \brief Set the pixel at the given indicies
+
+\param img The image to set the value of.
+\param i Row index of the image
+\param i Column index of the image
+\param i Value to set the pixel too.
+*/
+void set_pixel(Image* img, int i, int j, double value);
 
 /*! \brief Print an image to the console.
 \param img The image to print.

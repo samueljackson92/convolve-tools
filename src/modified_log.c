@@ -37,7 +37,9 @@ Image* convolve(Image* input, Image* kernel) {
 
                     // ignore input samples which are out of bound
                     if( ii >= 0 && ii < rows && jj >= 0 && jj < cols ) {
-                        output->data[i][j] += input->data[ii][jj] * kernel->data[mm][nn];
+                        double current = get_pixel(output, i, j);
+                        double value = get_pixel(input, ii, jj) * get_pixel(kernel, mm, nn);
+                        set_pixel(output, i, j, current+value);
                     }
                 }
             }
